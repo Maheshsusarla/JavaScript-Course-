@@ -204,3 +204,40 @@ for(let i=1;i<=10;i++){
     a=b;
     b=c
 }
+
+
+// for...of
+// Used to iterate over Arrays and Strings.
+
+let fruits = ["Apple", "Banana", "Orange"];
+for(let fruit of fruits){
+    console.log(fruit);
+}
+
+let products = ["TV","Laptop","Phone"];
+for(let product of products){
+    if(product === "Laptop"){
+        console.log("Product Found");
+        break;
+    }
+}
+
+// for in :
+// used to in a objects properites
+let student = {
+    name:"Mahesh",
+    age:21,
+    city:"Bangalore"
+};
+for(let key in student){
+    console.log(key, student[key]);
+}
+
+// Nested Loops
+// Loop inside another loop.
+
+for(let i = 1; i <= 3; i++){
+    for(let j = 1; j <= 2; j++){
+        console.log(i, j);
+    }
+}
