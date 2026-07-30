@@ -40,8 +40,9 @@
 
 // Array Methods
 
-// push():Adds an element to the end of the array.
-let cart = ["Laptop","Mouse","Keyboard"];
+// push():Adds an element to the end of the array. 
+// to also add or more elements also
+// let cart = ["Laptop","Mouse","Keyboard"];
 // cart.push("Gaming Mouse");
 // cart.push("Gaming Mouse","TV");
 // console.log(cart);
@@ -51,12 +52,12 @@ let cart = ["Laptop","Mouse","Keyboard"];
 // cart.pop();
 // console.log(cart);
 
-
+ 
 // shift() : Removes first element.
 // cart.shift();
 // console.log(cart);
 
-// unshift() :Adds first element.
+// unshift() :Adds first element. And also add 2 elements also
 // cart.unshift("Tv")
 // cart.unshift("Tv","Gaming Mouse");
 // console.log(cart);
@@ -81,6 +82,7 @@ let cart = ["Laptop","Mouse","Keyboard"];
 
 // splice(): method modifies an array in place by removing, replacing, or adding elements
 // let products = ["Laptop","Mouse","Keyboard","Monitor","Phone"];
+
 // Removing
 // console.log(products.splice(1,2)); // remove 1st and 2nd index 
 
@@ -114,8 +116,14 @@ let cart = ["Laptop","Mouse","Keyboard"];
 // let b=a.join("-");
 // console.log(b);
 
+
+// find() :Returns the first matching element.
+// let products=["Laptop","TV","Mouse"];
+// let item=products.find(p=>p==="TV");
+// console.log(item);
+
 // forEach() : Executes a function once for every array element.
-let fruits=["Apple", "Banana", "Orange"];
+// let fruits=["Apple", "Banana", "Orange"];
 // fruits.forEach((fruit)=>{
 //     console.log(fruit);  
 // })
@@ -143,3 +151,63 @@ let fruits=["Apple", "Banana", "Orange"];
 //     console.log(student.name,student.marks);  
 // });
 
+
+// Map():
+// Creates a new array by transforming every element.
+// Original array remains unchanged.
+
+// let price=[1000,2000,3000];
+// let gst=price.map(price=>price*1.18);
+// console.log(gst);
+
+
+// filter(): Returns elements that satisfy a condition.
+// let age=[12,18,19,13,34,16,38];
+// let adults=age.filter(adult=>adult>=18);
+// console.log(adults);
+
+// array to objects
+// let products = [
+// {
+//     id:1,
+//     name:"Laptop",
+//     price:60000
+// },
+// {
+//     id:2,
+//     name:"Mouse",
+//     price:1000
+// },
+// {
+//     id:3,
+//     name:"Keyboard",
+//     price:2500
+// }
+// ];
+
+// for(product of products){
+//     console.log(product.name);
+//     console.log(product.price);
+// }
+
+// Mini Project
+let cart = [];
+
+function addProduct(product){
+    cart.push(product);
+}
+
+function removeLastProduct(){
+    cart.pop();
+}
+
+function showCart(){
+    console.log(cart);
+}
+
+addProduct("Laptop");
+addProduct("Mouse");
+addProduct("Keyboard");
+showCart();
+removeLastProduct();
+showCart();
