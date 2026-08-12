@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h2>Employee Registration</h2>
+
+    <form id="employeeForm">
+      <input id="name" type="text" placeholder="Employee Name" />
+      <input id="email" type="email" placeholder="Employee Email" />
+
+      <select id="department">
+        <option value="">Select Department</option>
+        <option value="development">Development</option>
+        <option value="testing">Testing</option>
+        <option value="hr">HR</option>
+      </select>
+      <br /><br />
+      <button type="submit">Register Employee</button>
+    </form>
+
+    <ul id="result"></ul> 
+
+    <!-- <h1>key down</h1> -->
+    <!-- <input type="text" id="search"> -->
+     <h1>focus</h1>
+     <input type="email" id="email" placeholder="enter password">
+     <p id="help"></p>
+    <!doctype html>
+    <html>
+      <head>
+        <title>Employee Portal</title>
+      </head>
+
+      <body>
+        <h1>Employee Registration</h1>
+
+        <form id="registerForm">
+          <input type="text" id="name" placeholder="Full Name" />
+
+          <br /><br />
+
+          <input type="email" id="email" placeholder="Email" />
+
+          <br /><br />
+
+          <input type="password" id="password" placeholder="Password" />
+
+          <br /><br />
+
+          <input
+            type="password"
+            id="confirmPassword"
+            placeholder="Confirm Password"
+          />
+
+          <br /><br />
+
+          <button type="submit">Register</button>
+        </form>
+
+        <p id="message"></p>
+
+        <script src="script.js"></script>
+      </body>
+    </html>
+    <script src="./day10.js"></script>
+  </body>
+</html> 
+
+    <!doctype html>
+    <html lang="en">
+      <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+      </head>
+      <body>
+        <h1>Employee Management Dashboard</h1>
+
+        <input type="text" id="searchInput" placeholder="Search employee..." />
+
+        <select id="departmentFilter">
+          <option value="all">All Departments</option>
+
+          <option value="Development">Development</option>
+
+          <option value="Testing">Testing</option>
+
+          <option value="HR">HR</option>
+        </select>
+
+        <select id="sortSalary">
+          <option value="none">Sort Salary</option>
+
+          <option value="low">Low to High</option>
+
+          <option value="high">High to Low</option>
+        </select>
+
+        <div id="employeeContainer"></div>
+        <script src="./day10.js"></script>
+      </body>
+    </html>
+  </body>
+</html>
