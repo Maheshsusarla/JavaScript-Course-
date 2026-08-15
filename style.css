@@ -1,0 +1,91 @@
+body{
+    motion: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+h1{
+    text-align: center;
+    font-size: 3rem;
+}
+
+#form{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+input{
+    padding: 10px;
+    border-radius: 10px;
+    width: 40%;
+}
+
+input:hover{
+    border: 2px solid rgb(189, 188, 188);
+}
+
+#btn{
+    padding: 10px 15px;
+    border-radius: 10px;
+    background-color: rgb(0, 0, 0);
+    color: white;
+}
+
+
+
+
+#form-container div{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px;
+    border: 2px solid black;
+    border-radius: 10px;
+    width: 500px;
+    margin: auto;
+    margin-top: 20px;
+}
+
+#form-container h2{
+    padding: 20px;
+    text-align: center;
+    font-size: 2rem;
+    color: rgb(39, 39, 39);
+}
+
+#form-container input{
+    height: 18px;
+}
+
+#form-container p{
+    flex: 1;
+    color: rgb(90, 88, 88);
+}
+
+#form-container button{
+    padding:5px 10px;
+    cursor: pointer;
+    background-color: rgb(0, 0, 0);
+    color: white;
+    border-radius: 10px;
+}
+
+@media (max-width: 600px){
+    #form{
+        flex-direction: column;
+        padding: 20px;
+    }
+    #inputform {
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    #btn {
+        width: 100%;
+    }
+    #form-container div{
+        width: 90%;
+    }
+}
