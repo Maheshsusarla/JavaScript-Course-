@@ -1,0 +1,313 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>API DATA</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background: #f4f4f4;
+        padding: 30px;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: auto;
+      }
+
+      form {
+        background: white;
+        padding: 20px;
+        margin-bottom: 30px;
+        border-radius: 10px;
+      }
+
+      input,
+      textarea {
+        width: 100%;
+        padding: 10px;
+        margin: 8px 0;
+        box-sizing: border-box;
+      }
+
+      button {
+        padding: 10px 20px;
+        cursor: pointer;
+        border: none;
+        background: black;
+        color: white;
+        border-radius: 5px;
+      }
+
+      #productsContainer {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+      }
+
+      .product-card {
+        background: white;
+        padding: 20px;
+        border-radius: 10px;
+      }
+
+      .product-card img {
+        width: 150px;
+        height: 180px;
+        object-fit: contain;
+        display: block;
+        margin: auto;
+      }
+
+      .product-card h3 {
+        font-size: 18px;
+      }
+
+      .price {
+        font-weight: bold;
+        font-size: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Fake Store Products</h1>
+
+      <!-- POST FORM -->
+
+      <form id="productForm">
+        <h2>Add Product</h2>
+
+        <input type="text" id="title" placeholder="Product title" />
+
+        <input type="number" id="price" placeholder="Product price" />
+
+        <input type="text" id="category" placeholder="Category" />
+
+        <input type="text" id="image" placeholder="Image URL" />
+
+        <textarea id="description" placeholder="Product description"></textarea>
+
+        <button type="submit">Add Product</button>
+      </form>
+
+      <p id="message"></p>
+
+      <hr />
+
+      <h2>Products</h2>
+
+      <div id="productsContainer"></div>
+    </div>
+
+    <script>
+        // ==========================================
+        // ELEMENTS
+        // ==========================================
+
+        const productForm = document.getElementById("productForm");
+
+        const title = document.getElementById("title");
+
+        const price = document.getElementById("price");
+
+        const category = document.getElementById("category");
+
+        const image = document.getElementById("image");
+
+        const description = document.getElementById("description");
+
+        const productsContainer = document.getElementById("productsContainer");
+
+        const message = document.getElementById("message");
+
+        // API URL
+        const API_URL = "https://fakestoreapi.com/products";
+
+         // STORE PRODUCTS
+      // ==========================================
+
+      let products = [];
+
+      // get data
+      async function getProducts(){
+          try{
+              const response=await fetch(API_URL);
+               products =
+            await response.json();
+            console.log("Products:", products);
+            displayProducts();
+          } catch(error){
+           console.log("GET Error:", error);
+
+        message.textContent =
+          "Failed to load products";
+
+        message.style.color = "red";
+            
+          }
+      }
+
+      getProducts();
+
+    // DISPLAY PRODUCTS
+    function displayProducts(){
+        productsContainer.innerHTML="";
+        products.forEach((product)=>{
+            const productCard=document.createElement("div");
+            productCard.classList.add("product-card");
+
+            productCard.innerHTML=`
+            <img src="${product.image}" alt="${product.title}" >
+             <h3>
+            ${product.title}
+          </h3>
+
+          <p class="price">
+            $${product.price}
+          </p>
+
+          <p>
+            <strong>Category:</strong>
+            ${product.category}
+          </p>
+
+          <p>
+            ${product.description}
+          </p>
+            `;
+            productsContainer.appendChild(productCard)
+        })
+    };
+
+//     const productData = {
+//   title: "Gaming Mouse",
+//   price: 50,
+//   category: "electronics",
+//   description: "A good gaming mouse",
+//   image: "https://example.com/mouse.jpg"
+// };
+      // POST PRODUCT
+async function createProduct(productData) {
+
+  try {
+
+    const response = await fetch(API_URL, {
+
+      method: "POST",
+
+      headers: {
+        "Content-Type": "application/json"
+      },
+
+      body: JSON.stringify(productData)
+
+    });
+
+    const data = await response.json();
+
+    console.log("Created product:", data);
+
+    return data;
+
+  } catch (error) {
+
+    console.log("POST error:", error);
+
+  }
+}
+createProduct();
+
+  // ==========================================
+    // FORM SUBMIT
+    // ==========================================
+
+    productForm.addEventListener(
+      "submit",
+      async (e) => {
+
+        e.preventDefault();
+
+
+        // Create object
+
+        const productData = {
+
+          title: title.value,
+
+          price: Number(price.value),
+
+          category: category.value,
+
+          image: image.value,
+
+          description: description.value
+
+        };
+
+
+        // Validation
+
+        if (
+          !productData.title ||
+          !productData.price ||
+          !productData.category
+        ) {
+
+          message.textContent =
+            "Please fill all required fields";
+
+          message.style.color =
+            "red";
+
+          return;
+
+        }
+
+
+        // POST request
+
+        const newProduct =
+          await createProduct(productData);
+
+
+        if (newProduct) {
+
+          // Add returned product
+          // to local array
+
+          products.push(newProduct);
+
+
+          // Display updated products
+
+          displayProducts();
+
+
+          message.textContent =
+            "Product added successfully!";
+
+          message.style.color =
+            "green";
+
+
+          // Clear form
+
+          productForm.reset();
+
+        }
+
+      }
+    );
+
+
+    // ==========================================
+    // LOAD PRODUCTS
+    // ==========================================
+
+    getProducts();
+
+    </script>
+  </body>
+</html>
